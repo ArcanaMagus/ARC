@@ -9,6 +9,6 @@ public Object remove(Object key)
 	}
 	count--;
 	Object oldValue = a.value();
-	data[hash] = reserved; // in case anyone depends on u
+	data[hash] = reserved; // in case anyone depends on us
 	return oldValue;
 }
