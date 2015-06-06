@@ -1,0 +1,21 @@
+public Object put(Object key, Object value)
+// pre: key is non-null Object
+// post: key-value pair is added to hash table
+{
+	if (loadFactor*capaacity <= (1+count)) {
+		rehash();
+	}
+	int hash = locate(key);
+	Association z = data[hash];
+	if (z == null || z == reserved)
+	{	logically empty slot; just add Association
+		data[hash] = new Association(key,value);
+		count++;
+		return null;
+	} else {
+		// full slot; add new and return old value
+		Object oldValue = z.value();
+		z.setValue(value);
+		return oldValue;
+	}
+}
