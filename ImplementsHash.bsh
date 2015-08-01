@@ -13,6 +13,7 @@ public HashTable(int initialCapacity)
 	data = new Association[initialCapacity];
 	capacity = initialCapacity;
 	count = 0;
+	cycle = LogarithmCycle();
 }
 
 public HashTable()
