@@ -1,0 +1,21 @@
+ language: java
+ sudo: required
+before_script: mvn test 
+before_install: ./gradlew check
+install: ant deps
+matrix:
+	jdk:
+	- oraclejdk8
+	- oraclejdk7
+	- openjdk6
+script:
+   - jdk_switcher use oraclejdk8
+    - jdk_switcher use oraclejdk7
+   include:
+       - java: "8"	 
+	   env: JAVA_HOME=home_8
+	   - java: "7"
+	   env: JAVA_HOME=home_7
+	   - java: "openjdk"
+	   env: JAVA_HOME=home_openjdk
+   script: ./jdk_switcher $JAVA_HOME	   
